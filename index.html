@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENGLISH EXERCISE X</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-color: #f2f2f2;
+    }
+
+    .logo {
+      width: 100px;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 48px;
+      margin-bottom: 40px;
+      color: #4a90e2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-container {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .image-container img {
+      width: 300px;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 80%;
+    }
+
+    .modal-content img {
+      width: 100%;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .profile-pic {
+      width: 200px;
+      border-radius: 50%;
+      /* Animasi dasar */
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Animasi mengambang */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    /* Animasi berputar */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Animasi berdenyut */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Animasi bergoyang */
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-5deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* Animasi melompat */
+    @keyframes jump {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .image-container img {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .modal-content {
+        margin: 20% auto;
+        max-width: 95%;
+      }
+
+      .close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+      }
+
+      .caption {
+        font-size: 14px;
+      }
+      
+      .profile-pic {
+        width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-top">
+    <img src="Logo_SMAN_1_PKL_Lesung_HD_.png" alt="Logo" class="logo">
+  </div>
+  <h1>ENGLISH EXERCISE BY: MR. SUHERI</h1>
+
+  <div>
+    <img src="Avatar.png" alt="Foto Orang" class="profile-pic" id="animatedProfile">
+  </div>
+
+  <div class="image-container" onclick="openModal('myModal1')">
+    <img src="1.jpg" alt="Contoh Foto 1">
+    <div class="caption">Halaman pertama</div>
+  </div>
+
+  <div class="image-container" onclick="openModal('myModal2')">
+    <img src="2.jpg" alt="Contoh Foto 2">
+    <div class="caption">Halaman kedua</div>
+  </div>
+
+
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    // Animasi untuk gambar profil
+    const profilePic = document.getElementById('animatedProfile');
+    
+    // Pilihan animasi (bisa diganti sesuai preferensi)
+    let currentAnimation = 'float'; // Default: animasi mengambang
+    
+    // Ganti animasi saat gambar diklik
+    profilePic.addEventListener('click', function() {
+      const animations = ['float', 'spin', 'pulse', 'shake', 'jump'];
+      const nextIndex = (animations.indexOf(currentAnimation) + 1) % animations.length;
+      currentAnimation = animations[nextIndex];
+      
+      // Hapus semua kelas animasi
+      profilePic.style.animation = 'none';
+      void profilePic.offsetWidth; // Trigger reflow
+      
+      // Terapkan animasi baru
+      if (currentAnimation === 'spin') {
+        profilePic.style.animation = 'spin 2s linear infinite';
+      } else if (currentAnimation === 'pulse') {
+        profilePic.style.animation = 'pulse 1.5s ease-in-out infinite';
+      } else if (currentAnimation === 'shake') {
+        profilePic.style.animation = 'shake 0.5s ease-in-out infinite';
+      } else if (currentAnimation === 'jump') {
+        profilePic.style.animation = 'jump 1s ease-in-out infinite';
+      } else {
+        profilePic.style.animation = 'float 3s ease-in-out infinite';
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function(e) {
+      if(e.keyCode == 123) {
+        return false;
+      }
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+      }
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+      }
+      if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+      }
+      if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+      }
+    }
+  </script>
+
+  <footer>
+    <h1>Hak Cipta &copy; SMAN 1 Pangkalan Lesung (Suheri Ramadhan)</h1>
+  </footer>
+</body>
+</html>
