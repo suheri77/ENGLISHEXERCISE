@@ -191,15 +191,30 @@
   <div>
     <img src="SUHERI_UNY_3.png" alt="Foto Orang" class="profile-pic" id="animatedProfile">
   </div>
-
-  <div class="image-container" onclick="openModal('myModal1')">
-    <img src="1.jpg.png" alt="Contoh Foto 1">
-    <div class="caption">Halaman pertama</div>
+ <div class="image-container" onclick="openModal('myModal1')">
+    <img src="1.1.png" alt="Contoh Foto 1">
+    <div class="caption">Ini adalah keterangan foto pertama</div>
   </div>
 
   <div class="image-container" onclick="openModal('myModal2')">
-    <img src="2.jpg.png" alt="Contoh Foto 2">
-    <div class="caption">Halaman kedua</div>
+    <img src="1.2.png" alt="Contoh Foto 2">
+    <div class="caption">Ini adalah keterangan foto kedua</div>
+  </div>
+
+  <!-- Modal 1 -->
+  <div id="myModal1" class="modal" onclick="closeModal('myModal1')">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+      <img src="1.1.png" alt="Contoh Foto 1 Diperbesar">
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="myModal2" class="modal" onclick="closeModal('myModal2')">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+      <img src="1.2.png" alt="Contoh Foto 2 Diperbesar">
+    </div>
   </div>
 
 
